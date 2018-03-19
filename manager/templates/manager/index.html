@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manager</title>
+    <script type="text/javascript" src="{% static 'manager/js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'manager/js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'manager/js/jquery.toast.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'manager/js/main.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'manager/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'manager/css/fontawesome-all.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'manager/css/jquery.toast.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'manager/css/main.css' %}">
+</head>
+<body>
+	<div class="header row">
+		<div class="header-title col-md-11 offset-md-1">
+			<p>タスク管理ツール</p>
+		</div>
+	</div>
+    <div class="container">
+		<div class="row">
+			<div class="left-block col-md-4">
+				<div class="add-block">
+					<form id="task-form" action="{% url 'manager:add_task' %}" method="POST">
+						{% csrf_token %}
+						<div class="row add">
+							<div class="add-btn">
+								<a href="#"><i class="fas fa-plus-circle fa-2x"></i></a>
+							</div>
+							<div>
+								<p>タスク追加</p>
+							</div>
+						</div>
+						<div class="row add-form">
+							{% for field in form %}
+							<div class="row">
+								{{ field.label_tag }}
+							</div>
+							<div class="row">
+								{{ field }}
+							</div>
+							{% endfor %}
+							<div class="add-submit">
+								<button type="submit" class="btn btn-info">追加</button>
+							</div>
+						</div>
+						<div class="message">
+							{% if messages %}
+								{% for message in messages %}
+									{{ message }}
+								{% endfor %}
+							{% endif %}
+						</div>
+					</form>
+				</div>
+				<div class="upload-block">
+					<div class="upload-row row">
+						<div class="upload-btn">
+							<a href="#"><i class="fas fa-plus-circle fa-2x"></i></a>
+						</div>
+						<div>
+							<p>csvファイル</p>
+						</div>
+					</div>
+					<div class="upload-form">
+						<form action="{% url 'manager:upload_task' %}" id="file-upload" method="post" enctype="multipart/form-data">
+							{% csrf_token %}
+							<label for="file-input">
+								<i class="fas fa-upload"></i>ファイルを選択
+								<input type="file" id="file-input" name="csv">
+							</label>
+						</form>
+						<div class="file-name"></div>
+						<button type="button" class="btn confirm-btn" data-toggle="modal" data-target=".upload-modal">アップロード</button>
+					</div>
+					<div class="modal fade upload-modal first-modal">
+						<div class="modal-dialog modal-dialog-centered modal-lg">
+							<div class="modal-content">
+								<div class="modal-body">
+									<table class="upload-table table table-hover" id="id_upload_table">
+										<thead>
+											<tr>
+												<th scope="col">プロジェクト</th>
+												<th scope="col">タイトル</th>
+												<th scope="col">担当者</th>
+												<th scope="col">状態</th>
+												<th scope="col">開始日</th>
+											</tr>
+										</thead>
+										</tbody>
+									</table>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+									<button type="submit" class="upload-run btn btn-primary" form="file-upload">追加</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="task-block col-md-8">
+				<table class="table table-hover" id="main-table">
+					<thead>
+						<tr>
+							<th>プロジェクト</th>
+							<th>タイトル</th>
+							<th>担当者</th>
+							<th>状態</th>
+							<th>開始日</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for task in tasks %}
+						<tr id="task{{ task.id }}" data-toggle="modal" data-target=".project-modal" data-url="{% url 'manager:get_info' %}">
+							<td>{{ task.project }}</td>
+							<td>{{ task.title }}</td>
+							<td>{{ task.staff }}</td>
+							<td>{{ task.status }}</td>
+							<td>{{ task.start_date }}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				<div class="modal fade project-modal second-modal">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-body">
+								<p class="project-info"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+body{
+    background: #f7f7f7;
+}
+
+.container{
+    max-width: 960px;
+}
+
+.header{
+    height: 35px;
+    background: #4682b4;
+    color: white;
+}
+
+.header p{
+    padding-top: 6px;
+    width: 100%;
+}
+
+.left-block{
+    height: 100%;
+}
+
+.add-block{
+    margin-top: 20px;
+    margin-right: 15px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #eeeeee;
+    box-shadow: 3px 3px 8px #dfdfdf;
+    height: 100%;
+}
+
+.add{
+    margin-bottom: 10px;
+    padding-left: 20px;
+    height: 32px;
+}
+
+.add a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: #4682b4;
+}
+
+.add a:hover{
+    opacity: 0.7;
+}
+
+.add p{
+    margin-left: 10px;
+    padding-top: 5px;
+}
+
+.add-form{
+    display: none;
+    padding-top: 10px;
+    padding-left: 40px;
+    overflow: hidden;
+}
+
+.upload-block{
+    margin-top: 20px;
+    margin-right: 15px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #eeeeee;
+    box-shadow: 3px 3px 8px #dfdfdf;
+    height: 100%;
+}
+
+.upload-row{
+    margin-bottom: 10px;
+    padding-left: 20px;
+    height: 32px;
+}
+
+.upload-row a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: #4682b4;
+}
+
+.upload-row a:hover{
+    opacity: 0.7;
+}
+
+.upload-row p{
+    margin-left: 10px;
+    padding-top: 5px;
+}
+
+.upload-form{
+    display: none;
+    padding: 10px;
+}
+
+.upload-form label{
+    background: #4682b4;
+    color: white;
+    border-radius: 3px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.upload-form label:hover{
+    opacity: 0.8;
+    box-shadow: 0 3px 8px gray;
+}
+
+#file-input{
+    display: none;
+}
+
+.file-name{
+    height: 30px;
+}
+
+.confirm-btn{
+    display: none;
+    border-radius: 3px;
+    padding: 8px;
+}
+
+.confirm-btn:hover{
+    opacity: 0.8;
+    box-shadow: 0 3px 8px gray;
+}
+
+.task-block{
+    margin-top: 20px;
+    padding:20px;
+    background: white;
+    border: 1px solid #eeeeee;
+    box-shadow: 3px 3px 8px #dfdfdf;
+    height: 100%;
+}
+
+#main-table tbody tr{
+    cursor: pointer;
+}
+
+#main-table tbody tr:hover{
+    background: #eeeeee;
+    box-shadow: 0 3px 6px gray;
+}
+
+.add-submit{
+    margin-top: 15px;
+    float: right;
+    padding-right: 50px;
+    margin-bottom: 10px;
+}
+
+.add-submit button{
+    background: #4682b4;
+    border-color: #4682b4;
+    border-radius: 3px;
+}
+
+.add-submit button:hover{
+    background: #4682b4;
+    border-color: #4682b4;
+    opacity: 0.9;
+    box-shadow: 0 3px 8px gray;
+}
+
+.modal-lg{
+    max-width: 1000px;
+}
+
+.upload-table{
+    margin: 15px;
+    width: 950px;
+}
