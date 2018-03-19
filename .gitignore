@@ -1,0 +1,6 @@
+.idea/
+manager/_pycache_/
+manager/migrations/
+task_tool/_pycache_/
+
+*.sqlite3
